@@ -1,0 +1,42 @@
+## Configure GIT
+git config --global user.email "<email-ID>@gmail.com"
+git config --global user.name "<name>"
+
+## GIT basics
+git checkout <branch name>		# To checkout an existing branch
+git branch <new branch name>		# To create a new branch
+git branch -a				# To list down all the branch having on repo
+git branch -r				# To lits down Remote branch having on repo
+git pull				# To make your checkout up-to date with repo
+git push				# To publish your commit on GIT server online
+git clone <URL>				# To clone existing GIT repo to your local [aka Local Checkout]
+git remote add <URL>			# To add a repo as remote on existing GIT repo on your local [aka Remote Checkout] Done on already CLONE GIT repo, Used for merging purpose
+git remote update			# To update your remote GIT branch
+git status				# To show status of repo [to check confict, extra files, etc...]
+git diff				# To generate difference between last known git checkout and current modification
+git brnach -d/-D <branch name>		# small to 'd' delete a checkout, 'D' for force delete
+git clean -fd				# To Remove all uncommitted extra files
+git commit -a -m '<msg>'		# To commit your updation to your online repo [Not on Public Server, just to your account]
+git apply --stat <path to patch>	# To apply a patch on checkout branch [No need to commit after this]
+git merge <remote branch checkout>	# To merge Remote with existing local checkout [But First Clone a repo, add a remote repo and then do merge]
+git log --oneline --decorate		# will display all tags with commit messages
+git reset --hard HEAD			# To clean repository [delete all uncommitted data, use "git clean -fdx" to clean repo]
+git push origin <new branch>		# To push your newly created branch into you repo.
+
+## To resolve conflict use vimdiff tool of GIT
+git mergetool --tool=vimdiff <Path to file with confliction while merging>
+
+## Add Android Kernel GIT repo
+git clone https://android.googlesource.com/kernel/common/
+
+## Add Vanilla Kenrel GIT repo as Remote
+git remote add linux-stable-kernel git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+
+## To checkout a branch with new brnach name for your local
+git checkout -t  <branch name> -b <local name>
+
+## To generate a Patch from any repo
+git diff 521cb40 HEAD > 2.6.38-to-Android.patch
+
+## To get all Committed Version Hash Key
+git log --pretty=oneline --format="%Cgreen%h %Creset%s" --grep="Linux 3.18." -n 20
